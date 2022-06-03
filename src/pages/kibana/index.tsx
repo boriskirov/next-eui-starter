@@ -8,6 +8,28 @@ import {
 } from '@elastic/eui';
 import KibanaLayout from '../../layouts/kibana';
 
+const icons = [
+  'Kibana',
+  'EnterpriseSearch',
+  'Observability',
+  'Security',
+  'managementApp',
+];
+
+const cardNodes = icons.map(function (item, index) {
+  return (
+    <EuiFlexItem key={index}>
+      <EuiCard
+        icon={<EuiIcon size="xxl" type={`logo${item}`} />}
+        title={`${item}`}
+        isDisabled={false}
+        description="Example of a card's description. Stick to one or two sentences."
+        onClick={() => {}}
+      />
+    </EuiFlexItem>
+  );
+});
+
 const Index: FunctionComponent = () => {
   return (
     <KibanaLayout>
@@ -19,26 +41,7 @@ const Index: FunctionComponent = () => {
         }}>
         <EuiFlexGroup gutterSize="l">
           <EuiFlexItem>
-            <EuiCard
-              icon={<EuiIcon size="xxl" type="discoverApp" />}
-              title="Discover"
-              description="Example of a card's description. Stick to one or two sentences."
-            />
-          </EuiFlexItem>
-          <EuiFlexItem>
-            <EuiCard
-              icon={<EuiIcon size="xxl" type="dashboardApp" />}
-              title="Dashboards"
-              description="Example of a card's description. Stick to one or two sentences."
-            />
-          </EuiFlexItem>
-
-          <EuiFlexItem>
-            <EuiCard
-              icon={<EuiIcon size="xxl" type="lensApp" />}
-              title="Lens"
-              description="Example of a card's description. Stick to one or two sentences."
-            />
+            <EuiFlexGroup gutterSize="l">{cardNodes}</EuiFlexGroup>
           </EuiFlexItem>
         </EuiFlexGroup>
       </EuiPageTemplate>
